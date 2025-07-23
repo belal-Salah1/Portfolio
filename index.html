@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/myPhoto.webP" alt="Portfolio Logo">
+                <span>Portfolio</span>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-image">
+                    <div class="routing-border">
+                    </div>
+                    <img src="assets/myPhoto.webP" alt="Hassan Ahmed Mohamed">
+                </div>
+                <h1>Belal Salah</h1>
+                <p class="hero-subtitle">Junior Front-End Engineer</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-html5"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-css3-alt"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-js-square"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-bootstrap"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-react"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-sass"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I'm a frontend engineer with strong skills in Angular, RxJS, unit testing (Jasmine & Karma), web performance optimization, state management using NgRx, responsive layouts, and design patterns like SOLID principles.
+
+I also have experience with backend technologies such as Node.js, Express, and MongoDB through the MEAN stack, which I’ve studied to gain a deeper understanding of full-stack development</p>
+                
+                <p>Let’s connect and build high-impact web experiences together!</p>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                                <div class="skill-card">
+                    <div class="skill-icon html-icon"><i class="fa-brands fa-html5 fa-2x"></i></div>
+                    <h3>HTML</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon css-icon"><i class="fa-brands fa-css3-alt  fa-2x"></i></div>
+                    <h3>CSS</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon bootstrap-icon"><i class="fa-brands fa-bootstrap fa-2x"></i></div>
+                    <h3>Bootstrap</h3>
+                </div>
+
+
+                <div class="skill-card">
+                    <div class="skill-icon js-icon"><i class="fa-brands fa-js fa-2x"></i></div>
+                    <h3>Java Script</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon git-icon"><i class="fab fa-git-alt fa-2x"></i></div>
+                    <h3>GIT</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon github-icon"><i class="fab fa-github  fa-2x"></i></div>
+                    <h3>Github</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon angular-icon"><i class="fa-brands fa-angular  fa-2x"></i></i></div>
+                    <h3>ANGULAR</h3>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon nodejs-icon"><i class="fa-brands fa-node-js  fa-2x"></i></div>
+                    <h3>NODEJS</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/projects-images/ecommerce.webp" alt="E-commerce Website">
+                    </div>
+                    <div class="project-content">
+                        <h3>E-commerce Website Using Angular & expressjs</h3>
+                        <p> full stack E-commerce website using Angular & Express.js with login, products, and cart features.
+Integrated REST APIs, responsive design, and JWT authentication for secure user flow.</p>
+                        <div class="project-links">
+                            <a href="https://ecommerce-app-six-sepia.vercel.app/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/belal-Salah1/Ecommerce-app" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/projects-images/movieApp.webp" alt="E-commerce Website">
+                    </div>
+                    <div class="project-content">
+                        <h3>Movie app using angular & bootstrap</h3>
+                        <p> movie application using Angular and Bootstrap ,Integrated with the TMDB API to fetch real-time movie data and have dark & light mode.</p>
+                        <p class="movie-project">still under development</p>
+                        <div class="project-links">
+                            <!-- <a href="https://ecommerce-app-six-sepia.vercel.app/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/belal-Salah1/Ecommerce-app" class="project-link" title="GitHub"><i class="fab fa-github"></i></a> -->
+                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/projects-images/kasper.webp" alt="Weather & Prayer Times">
+                    </div>
+                    <div class="project-content">
+                        <h3>Kasper Template</h3>
+                        <p>A modern animated and responsive front-end website template built using HTML, CSS, and JavaScript.</p>
+                        <div class="project-links">
+                             <a href="https://belal-salah1.github.io/Kasper-Template/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/belal-Salah1/Kasper-Template" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/projects-images/Zero.webp" alt="">
+                    </div>
+                    <div class="project-content">
+                        <h3>Zero template</h3>
+                        <p>Designed a fully responsive website with a clean, modern UI. Built using pure HTML, CSS, and JavaScript (no frameworks), featuring reusable components, smooth scroll animations, and interactive section navigation</p>
+                        <div class="project-links">
+                         <a href="https://belal-salah1.github.io/Zero-template/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/belal-Salah1/Zero-template" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/projects-images/portfolio.webp" alt="e-commerce">
+                    </div>
+                    <div class="project-content">
+                        <h3>Second Portfolio</h3>
+                        <p> Developed a fully responsive personal portfolio using HTML, CSS, and JavaScript, featuring scroll-based animations and section reveals with the Intersection Observer API.</p>
+                        <div class="project-links">
+
+                            <a href="https://belal-salah1.github.io/My-Portfoilo/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/belal-Salah1/My-Portfoilo" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/projects-images/todoapp.webp" alt="">
+                    </div>
+                    <div class="project-content">
+                        <h3>Todo App</h3>
+                        <p>Simple todo app Using angular that have features like add , edit and delete tasks </p>
+                        <div class="project-links">
+                            <a href="https://belal-salah1.github.io/toDo-List/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/belal-Salah1/toDo-List" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://via.placeholder.com/40x40" alt="Portfolio Logo">
+                    <span>Portfolio</span>
+                </div>
+                <div class="footer-social">
+                    <a href="tel:+201080121345" class="footer-social-link" title="phone"><i class="fas fa-phone"></i></a>
+                    <a href="https://wa.me/201080121345" class="footer-social-link" title="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:belal.salah259@gmail.com" class="footer-social-link" title="Gmail"><i class="fas fa-envelope"></i></a>
+                   
+                    <a href="https://www.linkedin.com/in/belal-salah-2930b9287/" class="footer-social-link" title="linkedin"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/belal-Salah1" class="footer-social-link" title="github"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
