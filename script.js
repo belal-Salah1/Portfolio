@@ -10,10 +10,20 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
 });
 
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+hamburger.addEventListener('click', function () {
+    nav.classList.toggle('active');
+    nav.classList.toggle('list');
+   
+});
+
+
+
+
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
-    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -54,28 +64,9 @@ function initNavigation() {
     });
 }
 
-function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    const body = document.body;
-    
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', currentTheme);
-    updateThemeToggleIcon(currentTheme);
-    
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeToggleIcon(newTheme);
-    });
-}
 
-function updateThemeToggleIcon(theme) {
-    const themeToggle = document.querySelector('.theme-toggle');
-    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-}
+
+
 
 function initContactForm() {
     const contactForm = document.querySelector('.contact-form');
@@ -252,17 +243,7 @@ function initMobileMenu() {
     document.head.appendChild(mobileStyles);
 }
 
-function initLanguageToggle() {
-    const langBtn = document.querySelector('.lang-btn');
-    
-    langBtn.addEventListener('click', function() {
-        const currentLang = this.textContent;
-        const newLang = currentLang === 'EN' ? 'AR' : 'EN';
-        this.textContent = newLang;
-        
-        showNotification(`Language switched to ${newLang}`, 'info');
-    });
-}
+
 document.addEventListener('DOMContentLoaded', function() {
     initLanguageToggle();
 });
