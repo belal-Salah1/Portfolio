@@ -1,27 +1,19 @@
-// DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Navigation functionality
     initNavigation();
     
-    // Theme toggle functionality
     initThemeToggle();
     
-    // Form handling
     initContactForm();
     
-    // Scroll animations
     initScrollAnimations();
     
-    // Mobile menu (if needed)
     initMobileMenu();
 });
 
-// Navigation functionality
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section');
     
-    // Smooth scrolling for navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -40,7 +32,6 @@ function initNavigation() {
         });
     });
     
-    // Update active navigation link on scroll
     window.addEventListener('scroll', function() {
         let current = '';
         const headerHeight = document.querySelector('.header').offsetHeight;
@@ -63,12 +54,10 @@ function initNavigation() {
     });
 }
 
-// Theme toggle functionality
 function initThemeToggle() {
     const themeToggle = document.querySelector('.theme-toggle');
     const body = document.body;
     
-    // Check for saved theme preference or default to light mode
     const currentTheme = localStorage.getItem('theme') || 'light';
     body.setAttribute('data-theme', currentTheme);
     updateThemeToggleIcon(currentTheme);
@@ -88,20 +77,18 @@ function updateThemeToggleIcon(theme) {
     themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 
-// Contact form handling
 function initContactForm() {
     const contactForm = document.querySelector('.contact-form');
     
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
         const formData = new FormData(this);
         const name = formData.get('name');
         const email = formData.get('email');
         const message = formData.get('message');
         
-        // Basic validation
+    
         if (!name || !email || !message) {
             showNotification('Please fill in all fields', 'error');
             return;
@@ -112,14 +99,12 @@ function initContactForm() {
             return;
         }
         
-        // Simulate form submission
         const submitBtn = this.querySelector('.submit-btn');
         const originalText = submitBtn.textContent;
         
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
-        // Simulate API call
         setTimeout(() => {
             showNotification('Message sent successfully!', 'success');
             this.reset();
@@ -129,26 +114,22 @@ function initContactForm() {
     });
 }
 
-// Email validation
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
-// Notification system
 function showNotification(message, type = 'info') {
-    // Remove existing notification
+    
     const existingNotification = document.querySelector('.notification');
     if (existingNotification) {
         existingNotification.remove();
     }
     
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
     
-    // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -167,12 +148,10 @@ function showNotification(message, type = 'info') {
     
     document.body.appendChild(notification);
     
-    // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Remove after 3 seconds
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
@@ -181,7 +160,6 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// Scroll animations
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -196,20 +174,17 @@ function initScrollAnimations() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
     const animateElements = document.querySelectorAll('.skill-card, .project-card, .about-content, .contact-form');
     animateElements.forEach(el => {
+        el.classList.add('scroll-reveal');
         observer.observe(el);
     });
 }
 
-// Mobile menu functionality
 function initMobileMenu() {
-    // Create mobile menu toggle button
     const header = document.querySelector('.header .container');
     const nav = document.querySelector('.nav');
     
-    // Create hamburger menu button
     const mobileMenuBtn = document.createElement('button');
     mobileMenuBtn.className = 'mobile-menu-btn';
     mobileMenuBtn.innerHTML = '☰';
@@ -223,16 +198,13 @@ function initMobileMenu() {
         padding: 0.5rem;
     `;
     
-    // Insert mobile menu button
     const headerControls = document.querySelector('.header-controls');
     headerControls.insertBefore(mobileMenuBtn, headerControls.firstChild);
     
-    // Mobile menu toggle functionality
     mobileMenuBtn.addEventListener('click', function() {
         nav.classList.toggle('mobile-nav-open');
     });
     
-    // Close mobile menu when clicking on nav links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -240,7 +212,6 @@ function initMobileMenu() {
         });
     });
     
-    // Add mobile styles
     const mobileStyles = document.createElement('style');
     mobileStyles.textContent = `
         @media (max-width: 768px) {
@@ -281,27 +252,21 @@ function initMobileMenu() {
     document.head.appendChild(mobileStyles);
 }
 
-// Language toggle functionality (placeholder)
 function initLanguageToggle() {
     const langBtn = document.querySelector('.lang-btn');
     
     langBtn.addEventListener('click', function() {
-        // Placeholder for language switching functionality
         const currentLang = this.textContent;
         const newLang = currentLang === 'EN' ? 'AR' : 'EN';
         this.textContent = newLang;
         
-        // Here you would implement actual language switching
         showNotification(`Language switched to ${newLang}`, 'info');
     });
 }
-
-// Initialize language toggle
 document.addEventListener('DOMContentLoaded', function() {
     initLanguageToggle();
 });
 
-// Smooth scroll to top functionality
 function scrollToTop() {
     window.scrollTo({
         top: 0,
@@ -309,7 +274,6 @@ function scrollToTop() {
     });
 }
 
-// Add scroll to top button
 function addScrollToTopButton() {
     const scrollBtn = document.createElement('button');
     scrollBtn.innerHTML = '↑';
@@ -336,7 +300,6 @@ function addScrollToTopButton() {
     
     scrollBtn.addEventListener('click', scrollToTop);
     
-    // Show/hide scroll to top button
     window.addEventListener('scroll', function() {
         if (window.pageYOffset > 300) {
             scrollBtn.style.opacity = '1';
@@ -347,32 +310,43 @@ function addScrollToTopButton() {
         }
     });
 }
-
-// Initialize scroll to top button
 document.addEventListener('DOMContentLoaded', function() {
     addScrollToTopButton();
 });
 
-// Typing effect for hero subtitle
 function initTypingEffect() {
     const subtitle = document.querySelector('.hero-subtitle');
-    const text = subtitle.textContent;
-    subtitle.textContent = '';
-    
+    const text = subtitle.dataset.text;
+    subtitle.textContent = ''; 
+
     let i = 0;
+    let isDeleting = false;
+
     const typeWriter = () => {
-        if (i < text.length) {
-            subtitle.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
+        if (!isDeleting) {
+            if (i < text.length) {
+                subtitle.textContent = text.substring(0, i + 1);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                isDeleting = true;
+                setTimeout(typeWriter, 1000);
+            }
+        } else {
+            if (i > 0) {
+                subtitle.textContent = text.substring(0, i - 1);
+                i--;
+                setTimeout(typeWriter, 50);
+            } else {
+                isDeleting = false;
+                setTimeout(typeWriter, 500);
+            }
         }
     };
-    
-    // Start typing effect after a delay
+
     setTimeout(typeWriter, 1000);
 }
 
-// Initialize typing effect
 document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect();
 });
