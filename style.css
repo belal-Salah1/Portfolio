@@ -1035,6 +1035,7 @@ body::before {
 [data-anim='5'] { animation-delay: .48s }
 [data-anim='6'] { animation-delay: .58s }
 [data-anim='7'] { animation-delay: .68s }
+[data-anim='8'] { animation-delay: .78s }
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: none; }
@@ -1065,8 +1066,7 @@ body::before {
 .also .reveal:nth-child(3), .slabs .reveal:nth-child(3) { --d: .14s }
 .svcs .reveal:nth-child(4), .steps .reveal:nth-child(4),
 .also .reveal:nth-child(4), .slabs .reveal:nth-child(4) { --d: .21s }
-.svcs .reveal:nth-child(5), .steps .reveal:nth-child(5),
-.slabs .reveal:nth-child(5) { --d: .28s }
+.svcs .reveal:nth-child(5), .steps .reveal:nth-child(5) { --d: .28s }
 .svcs .reveal:nth-child(6), .steps .reveal:nth-child(6) { --d: .35s }
 .grid2 .reveal:nth-child(2) { --d: .1s }
 
@@ -1139,4 +1139,6 @@ body::before {
   .reveal { opacity: 1; transform: none; }
   .aura span { animation: none; }
   .portrait { animation: none; }
+  /* ScrollTrigger never runs here, so show the spine filled rather than empty */
+  .tl { --f: 1; }
 }
