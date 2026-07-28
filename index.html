@@ -1,266 +1,554 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="icon" type="image/png" href="assets/favicon-belal.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belal Salah — Full-Stack Engineer</title>
+<meta name="description" content="Full-stack engineer in Cairo. I take products from whiteboard to production — requirements, system design, frontend, backend, deployment and support. Laravel, Vue, Angular, AWS.">
+<meta name="author" content="Belal Salah">
+<meta name="theme-color" content="#0A0912">
 
+<meta property="og:type" content="website">
+<meta property="og:title" content="Belal Salah — Full-Stack Engineer">
+<meta property="og:description" content="I take products from whiteboard to production. Laravel, Vue, Angular, AWS.">
+<meta property="og:image" content="assets/myPhoto.webP">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400..600&family=JetBrains+Mono:wght@400..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="assets/myPhoto.webP" alt="Portfolio Logo">
-                <span>Portfolio</span>
-            </div>
-            <nav class="nav">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
-            <button class="hamburger"><i class="fas fa-bars"></i></button>
+<a class="skip" href="#main">Skip to content</a>
 
+<div class="aura" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="head">
+  <div class="progress" aria-hidden="true"></div>
+  <div class="wrap head__row">
+    <a class="mark" href="#top" aria-label="Belal Salah, back to top">
+      <img src="assets/favicon.svg" alt="" width="34" height="34">
+      <span class="mark__name">Belal&nbsp;Salah</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#stack">Stack</a>
+      <a href="#process">Process</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="head__end">
+      <a class="btn btn--sm" href="#contact">Start a project</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ── Hero ───────────────────────────────────────────── -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__text">
+      <p class="pill" data-anim="1"><i class="dot"></i> Available for new projects</p>
+
+      <h1 class="hero__title">
+        <span data-anim="2">I take products</span>
+        <span data-anim="3">from <em class="sketch">whiteboard</em></span>
+        <span data-anim="4">to <em class="live">production</em>.</span>
+      </h1>
+
+      <p class="hero__sub" data-anim="5">
+        Two years at Convertedin building e-commerce platforms, marketing-AI SaaS and monitoring
+        systems. I handle requirements, system design, frontend, backend, deployment, and the
+        production support after launch.
+      </p>
+
+      <div class="hero__acts" data-anim="6">
+        <a class="btn" href="#contact">Start a project <i class="fas fa-arrow-right"></i></a>
+        <a class="btn btn--ghost" href="#work">See the work</a>
+        <a class="txtlink" href="assets/Belal Salah Mowaad.pdf" download>
+          <i class="fas fa-arrow-down"></i> Download CV
+        </a>
+      </div>
+
+      <p class="hero__meta" data-anim="7">
+        <span>Shipped in</span>
+        E-commerce · Marketing AI · Monitoring · Order systems
+      </p>
+    </div>
+
+    <div class="hero__me" data-anim="4">
+      <div class="portrait">
+        <div class="portrait__shot">
+          <img src="assets/myPhoto.webP" width="1080" height="1080"
+               alt="Belal Salah" fetchpriority="high" decoding="async">
         </div>
-    </header>
+      </div>
+      <p class="portrait__tag"><span>Cairo, Egypt</span> · UTC+3</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="profile-image">
-                    <div class="routing-border">
-                    </div>
-                    <img src="assets/myPhoto.webP" alt="Hassan Ahmed Mohamed">
-                </div>
-                <div class="text">
-                    <h1>Belal Salah </h1>
-                    <p class="hero-subtitle" data-text="Junior Front-End Engineer">Junior Front-End Engineer</p>
-                    <div class="footer-social">
-                        <a href="tel:+201080121345" class="footer-social-link" target="_blank" title="phone"><i class="fas fa-phone"></i></a>
-                        <a href="https://wa.me/201080121345" class="footer-social-link" target="_blank" title="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:belal.salah259@gmail.com" class="footer-social-link" target="_blank" title="Gmail"><i class="fas fa-envelope"></i></a>
-                       
-                        <a href="https://www.linkedin.com/in/belal-salah-2930b9287/" class="footer-social-link" target="_blank" title="linkedin"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/belal-Salah1" class="footer-social-link" target="_blank" title="github"><i class="fab fa-github"></i></a>
-                    </div>
-                    <div class="action__btn"><a href="#contact" class="contact-button" target="_blank">ContactUs</a>
-                        <a href="./assets/Belal Salah Mowaad.pdf" class="contact-button DownloadCv" target="_blank" download="./assets/Belal__Salah__Mowaad.pdf">Download CV</a></div>
-                </div>
-            </div>
+<!-- ── Ticker ─────────────────────────────────────────── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <ul class="ticker__set">
+      <li>Laravel</li><li>Vue.js</li><li>Angular</li><li>TypeScript</li><li>Inertia.js</li>
+      <li>Tailwind CSS</li><li>Node.js</li><li>MySQL</li><li>Redis</li><li>Docker</li>
+      <li>AWS</li><li>Claude API</li>
+    </ul>
+    <ul class="ticker__set">
+      <li>Laravel</li><li>Vue.js</li><li>Angular</li><li>TypeScript</li><li>Inertia.js</li>
+      <li>Tailwind CSS</li><li>Node.js</li><li>MySQL</li><li>Redis</li><li>Docker</li>
+      <li>AWS</li><li>Claude API</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── About ──────────────────────────────────────────── -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="head2 reveal reveal--fade">
+      <p class="eyebrow"><span>About</span></p>
+      <h2>I like owning the whole thing.</h2>
+    </div>
+
+    <div class="about">
+      <div class="about__body reveal">
+        <p class="big">
+          I build end to end: the initial idea and requirements, system design, frontend and
+          backend development, deployment, and production support.
+        </p>
+        <p>
+          Taking a product from something a founder described in a meeting to something real
+          customers depend on is the part of this job I actually enjoy — and it's the reason I
+          learned both sides of the stack instead of picking one.
+        </p>
+        <p>
+          At Convertedin I've worked on e-commerce platforms, marketing AI SaaS, monitoring
+          systems and the internal Orders system, helping the business launch new products,
+          automate manual processes and make existing tools measurably faster.
+        </p>
+      </div>
+
+      <aside class="card facts reveal">
+        <dl>
+          <div><dt>Role</dt><dd>Full-Stack Engineer</dd></div>
+          <div><dt>Based in</dt><dd>Maadi, Cairo — remote friendly</dd></div>
+          <div><dt>Core stack</dt><dd>Laravel · Vue · Angular · MySQL · AWS</dd></div>
+          <div><dt>Studying</dt><dd>CS at Misr University for Science &amp; Technology</dd></div>
+          <div><dt>Reply time</dt><dd>Usually within a day</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <h3 class="minihead reveal">What I can help you with</h3>
+    <ul class="svcs">
+      <li class="card svc reveal l1"><i class="fas fa-cube"></i>
+        <h4>Build web apps from scratch</h4>
+        <p>Greenfield products, set up properly from the first commit.</p></li>
+      <li class="card svc reveal l1"><i class="fas fa-lightbulb"></i>
+        <h4>Turn an idea into a product</h4>
+        <p>Requirements, scope and a plan you can actually ship against.</p></li>
+      <li class="card svc reveal l2"><i class="fas fa-sitemap"></i>
+        <h4>Design architectures and APIs</h4>
+        <p>Scalable structure, secure REST endpoints, sane data models.</p></li>
+      <li class="card svc reveal l3"><i class="fas fa-gauge-high"></i>
+        <h4>Fast, responsive interfaces</h4>
+        <p>Modern UI that stays quick on real devices and slow networks.</p></li>
+      <li class="card svc reveal l4"><i class="fas fa-wand-magic-sparkles"></i>
+        <h4>Integrate AI and automation</h4>
+        <p>LLM workflows that remove manual steps from real processes.</p></li>
+      <li class="card svc reveal l4"><i class="fas fa-arrow-up-right-dots"></i>
+        <h4>Scale what already exists</h4>
+        <p>New features, performance work and maintenance on live products.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── Stack (signature) ──────────────────────────────── -->
+<section class="sec" id="stack">
+  <div class="wrap">
+    <div class="head2 reveal reveal--fade">
+      <p class="eyebrow"><span>The stack</span></p>
+      <h2>Full-stack, layer&nbsp;by&nbsp;layer.</h2>
+      <p class="lede">Every layer below is one I've shipped to production. Open one to see what's inside.</p>
+    </div>
+
+    <div class="slabs">
+      <details class="slab reveal l1" open>
+        <summary>
+          <span class="slab__no">L1</span>
+          <span class="slab__name">Interface</span>
+          <span class="slab__hint">What the user touches</span>
+          <i class="slab__chev fas fa-plus"></i>
+        </summary>
+        <div class="slab__body"><ul class="chips">
+          <li>Vue.js</li><li>Angular</li><li>TypeScript</li><li>JavaScript</li>
+          <li>Tailwind CSS</li><li>Sass</li><li>Bootstrap</li><li>PrimeNG</li>
+          <li>Inertia.js</li><li>Pinia</li><li>NgRx</li><li>RxJS</li>
+          <li>Angular Signals</li><li>Jasmine &amp; Karma</li><li>Web performance</li>
+        </ul></div>
+      </details>
+
+      <details class="slab reveal l2">
+        <summary>
+          <span class="slab__no">L2</span>
+          <span class="slab__name">Application</span>
+          <span class="slab__hint">Business logic and APIs</span>
+          <i class="slab__chev fas fa-plus"></i>
+        </summary>
+        <div class="slab__body"><ul class="chips">
+          <li>Laravel</li><li>PHP</li><li>Node.js</li><li>Express.js</li>
+          <li>REST APIs</li><li>Auth &amp; RBAC</li><li>Multi-factor auth</li>
+          <li>Validation</li><li>Middleware</li><li>Queues</li><li>System design</li>
+        </ul></div>
+      </details>
+
+      <details class="slab reveal l3">
+        <summary>
+          <span class="slab__no">L3</span>
+          <span class="slab__name">Data</span>
+          <span class="slab__hint">Where the truth lives</span>
+          <i class="slab__chev fas fa-plus"></i>
+        </summary>
+        <div class="slab__body"><ul class="chips">
+          <li>MySQL</li><li>MongoDB</li><li>Redis</li><li>Eloquent ORM</li>
+          <li>Schema design</li><li>Query optimization</li><li>Indexing</li><li>Pagination</li>
+        </ul></div>
+      </details>
+
+      <details class="slab reveal l4">
+        <summary>
+          <span class="slab__no">L4</span>
+          <span class="slab__name">Infrastructure</span>
+          <span class="slab__hint">How it ships and stays up</span>
+          <i class="slab__chev fas fa-plus"></i>
+        </summary>
+        <div class="slab__body"><ul class="chips">
+          <li>AWS</li><li>Docker</li><li>CI/CD</li><li>Linux</li>
+          <li>Git &amp; GitHub</li><li>Sentry</li><li>Lighthouse</li><li>WebPageTest</li>
+        </ul></div>
+      </details>
+
+      <div class="cross reveal">
+        <p class="cross__label"><i class="fas fa-bolt"></i> Cuts across every layer</p>
+        <h3>AI &amp; automation</h3>
+        <ul class="chips chips--cross">
+          <li>Claude API</li><li>LLM workflows</li><li>AI agents</li>
+          <li>Skills &amp; workflows</li><li>Prompt engineering</li><li>AI-assisted development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Process ────────────────────────────────────────── -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="head2 reveal reveal--fade">
+      <p class="eyebrow"><span>How I work</span></p>
+      <h2>Idea to production, in six steps.</h2>
+      <p class="lede">The order matters — each step is what makes the next one cheap.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step reveal l1"><span class="step__no">01</span>
+        <h3>Discover</h3>
+        <p>We talk through the idea, the users and what success looks like. I write the requirements down so we're agreeing on the same thing.</p></li>
+      <li class="step reveal l1"><span class="step__no">02</span>
+        <h3>Design the system</h3>
+        <p>Data model, API surface, architecture and the tradeoffs — decided before any code gets written.</p></li>
+      <li class="step reveal l2"><span class="step__no">03</span>
+        <h3>Build the backend</h3>
+        <p>Laravel or Node, REST endpoints, authentication and roles, validation, and queries that stay fast as rows pile up.</p></li>
+      <li class="step reveal l3"><span class="step__no">04</span>
+        <h3>Build the interface</h3>
+        <p>Vue or Angular, responsive and accessible, with rendering and network work done so it feels immediate.</p></li>
+      <li class="step reveal l4"><span class="step__no">05</span>
+        <h3>Ship it</h3>
+        <p>Docker, CI/CD and AWS, with error monitoring wired up so problems surface before customers report them.</p></li>
+      <li class="step reveal l4"><span class="step__no">06</span>
+        <h3>Support it</h3>
+        <p>Fixes, performance work and new features as the product and its traffic grow.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ── Work ───────────────────────────────────────────── -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="head2 reveal reveal--fade">
+      <p class="eyebrow"><span>Selected work</span></p>
+      <h2>Things I've built.</h2>
+    </div>
+
+    <!-- Featured: Real estate -->
+    <article class="feat reveal">
+      <div class="feat__media">
+        <div class="demo" data-demo="click">
+          <video preload="none" playsinline width="1280" height="720"
+                 aria-label="Screen recording of the real estate marketplace">
+            <source src="assets/real-estate-demo.mp4" type="video/mp4">
+          </video>
+          <button class="demo__cover" type="button">
+            <span class="demo__play"><i class="fas fa-play"></i></span>
+            <span class="demo__cta">Play walkthrough</span>
+            <span class="demo__len">2 min 42 s · loads when you press play</span>
+          </button>
         </div>
-    </section>
+      </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p>I'm a frontend engineer with strong skills in Angular, RxJS, unit testing (Jasmine & Karma), web performance optimization, state management using NgRx, responsive layouts, and design patterns like SOLID principles.
+      <div class="feat__text">
+        <p class="feat__flag"><span class="tagline">Featured</span> Published 28 Jul 2026</p>
+        <h3>Real Estate Marketplace</h3>
+        <p class="role">My role — Full-stack engineer</p>
+        <p>
+          The client wanted property owners to manage their own listings, customers to discover
+          properties and book viewing appointments, and administrators to review and approve every
+          listing before it went public.
+        </p>
+        <p>
+          I built the approval workflow and the three role-based experiences around it, with
+          multi-factor authentication on top. The result is a platform that made property
+          management simpler without loosening editorial control — and one that scales as listings
+          grow.
+        </p>
+        <ul class="tags">
+          <li class="l2">Laravel</li><li class="l1">Vue.js</li>
+          <li class="l2">Multi-factor auth</li><li class="l4">DevOps</li>
+          <li class="l3">Database design</li>
+        </ul>
+      </div>
+    </article>
 
-I also have experience with backend technologies such as Node.js, Express, and MongoDB through the MEAN stack, which I’ve studied to gain a deeper understanding of full-stack development</p>
-                
-                <p>Let’s connect and build high-impact web experiences together!</p>
-                
-
-            </div>
+    <!-- Featured: Market-place -->
+    <article class="feat feat--flip reveal">
+      <div class="feat__media">
+        <div class="demo" data-demo="loop">
+          <video muted loop playsinline preload="metadata" width="1366" height="768"
+                 aria-label="Screen recording of the Market-Place dashboards">
+            <source src="assets/marketplace-demo.mp4" type="video/mp4">
+          </video>
+          <button class="demo__toggle" type="button" aria-label="Pause demo">
+            <i class="fas fa-pause"></i>
+          </button>
         </div>
-    </section>
+      </div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                                <div class="skill-card">
-                    <div class="skill-icon html-icon"><i class="fa-brands fa-html5 fa-2x"></i></div>
-                    <h3>HTML</h3>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon css-icon"><i class="fa-brands fa-css3-alt  fa-2x"></i></div>
-                    <h3>CSS</h3>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon bootstrap-icon"><i class="fa-brands fa-bootstrap fa-2x"></i></div>
-                    <h3>Bootstrap</h3>
-                </div>
+      <div class="feat__text">
+        <p class="feat__flag"><span class="tagline">Featured</span> Multi-role SaaS</p>
+        <h3>Market-Place</h3>
+        <p class="role">My role — Full-stack engineer</p>
+        <p>
+          A multi-role marketplace with a separate dashboard for each kind of user. Vendors get
+          earnings, coupons, order tracking and customer messaging. Customers browse, search,
+          order and review. Admins oversee all of it behind role-based access control.
+        </p>
+        <p>
+          Built on Laravel 12 and Inertia.js v2 with Vue 3 and Tailwind, with real-time stats,
+          dark mode and GSAP motion throughout.
+        </p>
+        <ul class="tags">
+          <li class="l2">Laravel 12</li><li class="l1">Inertia.js v2</li>
+          <li class="l1">Vue 3</li><li class="l1">Tailwind CSS</li>
+          <li class="l1">GSAP</li><li class="l3">MySQL</li>
+        </ul>
+        <p class="feat__links">
+          <a class="btn btn--ghost btn--sm" href="https://github.com/belal-Salah1/market-place" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> Source
+          </a>
+        </p>
+      </div>
+    </article>
 
-
-                <div class="skill-card">
-                    <div class="skill-icon js-icon"><i class="fa-brands fa-js fa-2x"></i></div>
-                    <h3>Java Script</h3>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon git-icon"><i class="fab fa-git-alt fa-2x"></i></div>
-                    <h3>GIT</h3>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon github-icon"><i class="fab fa-github  fa-2x"></i></div>
-                    <h3>Github</h3>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon angular-icon"><i class="fa-brands fa-angular  fa-2x"></i></i></div>
-                    <h3>ANGULAR</h3>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon nodejs-icon"><i class="fa-brands fa-node-js  fa-2x"></i></div>
-                    <h3>NODEJS</h3>
-                </div>
-            </div>
+    <!-- Secondary grid -->
+    <div class="grid2">
+      <article class="card proj reveal l1">
+        <div class="proj__shot">
+          <img src="assets/projects-images/ecommerce.webp" alt="E-commerce application interface" loading="lazy" decoding="async">
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/projects-images/ecommerce.webp" alt="E-commerce Website">
-                    </div>
-                    <div class="project-content">
-                        <h3>E-commerce Website Using Angular & expressjs</h3>
-                        <p> full stack E-commerce website using Angular & Express.js with login, products, and cart features.
-Integrated REST APIs, responsive design, and JWT authentication for secure user flow.</p>
-                        <div class="project-links">
-                            <a href="https://ecommerce-app-six-sepia.vercel.app/" class="project-link" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/belal-Salah1/Ecommerce-app" class="project-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/projects-images/movieApp.webp" alt="E-commerce Website">
-                    </div>
-                    <div class="project-content">
-                        <h3>Movie app using angular & bootstrap</h3>
-                        <p> movie application using Angular and Bootstrap ,Integrated with the TMDB API to fetch real-time movie data and have dark & light mode.</p>
-                        <p class="movie-project">still under development</p>
-                        <div class="project-links">
-                            <!-- <a href="https://ecommerce-app-six-sepia.vercel.app/" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/belal-Salah1/Ecommerce-app" class="project-link" title="GitHub"><i class="fab fa-github"></i></a> -->
-                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/projects-images/kasper.webp" alt="Weather & Prayer Times">
-                    </div>
-                    <div class="project-content">
-                        <h3>Kasper Template</h3>
-                        <p>A modern animated and responsive front-end website template built using HTML, CSS, and JavaScript.</p>
-                        <div class="project-links">
-                             <a href="https://belal-salah1.github.io/Kasper-Template/" class="project-link" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/belal-Salah1/Kasper-Template" class="project-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/projects-images/Zero.webp" alt="">
-                    </div>
-                    <div class="project-content">
-                        <h3>Zero template</h3>
-                        <p>Designed a fully responsive website with a clean, modern UI. Built using pure HTML, CSS, and JavaScript (no frameworks), featuring reusable components, smooth scroll animations, and interactive section navigation</p>
-                        <div class="project-links">
-                         <a href="https://belal-salah1.github.io/Zero-template/" class="project-link" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/belal-Salah1/Zero-template" class="project-link" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/projects-images/portfolio.webp" alt="e-commerce">
-                    </div>
-                    <div class="project-content">
-                        <h3>Second Portfolio</h3>
-                        <p> Developed a fully responsive personal portfolio using HTML, CSS, and JavaScript, featuring scroll-based animations and section reveals with the Intersection Observer API.</p>
-                        <div class="project-links">
-
-                            <a href="https://belal-salah1.github.io/My-Portfoilo/" target="_blank" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/belal-Salah1/My-Portfoilo" target="_blank" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
-                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/projects-images/todoapp.webp" alt="">
-                    </div>
-                    <div class="project-content">
-                        <h3>Todo App</h3>
-                        <p>Simple todo app Using angular that have features like add , edit and delete tasks </p>
-                        <div class="project-links">
-                            <a href="https://belal-salah1.github.io/toDo-List/" target="_blank" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/belal-Salah1/toDo-List" target="_blank" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
-                            <!-- <a href="#" class="project-link" title="Details"><i class="fas fa-info-circle"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="proj__body">
+          <h3>E-commerce Application</h3>
+          <p class="role">Full-stack — Angular + Express</p>
+          <p>
+            A lazy-loaded modular Angular front end over an Express API. JWT auth with
+            admin, manager and user roles, full CRUD for products, categories, orders and
+            users, and performance work on change detection, hydration and layout shift.
+          </p>
+          <ul class="tags">
+            <li class="l1">Angular</li><li class="l1">Bootstrap 5</li>
+            <li class="l2">Node.js</li><li class="l2">Express</li>
+            <li class="l3">MongoDB</li><li class="l2">JWT</li>
+          </ul>
+          <p class="proj__links">
+            <a href="https://ecommerce-app-six-sepia.vercel.app/" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live</a>
+            <a href="https://github.com/belal-Salah1/Ecommerce-app" target="_blank" rel="noopener"><i class="fab fa-github"></i> Frontend</a>
+            <a href="https://github.com/belal-Salah1/Ecommerce-app-backend" target="_blank" rel="noopener"><i class="fab fa-github"></i> Backend</a>
+          </p>
         </div>
-    </section>
+      </article>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-content">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send</button>
-                </form>
-            </div>
+      <article class="card proj reveal l3">
+        <div class="proj__shot">
+          <img src="assets/projects-images/movieApp.webp" alt="Movie browsing application interface" loading="lazy" decoding="async">
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/myPhoto.webP" alt="Portfolio Logo">
-                    <span>Portfolio</span>
-                </div>
-                <div class="footer-social">
-                    <a href="tel:+201080121345" class="footer-social-link" target="_blank" title="phone"><i class="fas fa-phone"></i></a>
-                    <a href="https://wa.me/201080121345" class="footer-social-link" target="_blank" title="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:belal.salah259@gmail.com" class="footer-social-link" target="_blank" title="Gmail"><i class="fas fa-envelope"></i></a>
-                   
-                    <a href="https://www.linkedin.com/in/belal-salah-2930b9287/" class="footer-social-link" target="_blank" title="linkedin"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/belal-Salah1" class="footer-social-link" target="_blank" title="github"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
+        <div class="proj__body">
+          <h3>Movie App</h3>
+          <p class="role">Frontend — Angular + TMDB API</p>
+          <p>
+            Movie browsing on the TMDB API: listings, genre filters, search, detail pages, a cast
+            carousel, a trailer modal and theme switching — built from reusable components with a
+            lean render path.
+          </p>
+          <ul class="tags">
+            <li class="l1">Angular</li><li class="l1">TypeScript</li>
+            <li class="l1">RxJS</li><li class="l2">TMDB API</li>
+          </ul>
+          <p class="proj__links">
+            <a href="https://movie-app-two-indol.vercel.app/list/popular" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> Live</a>
+            <a href="https://github.com/belal-Salah1/movie-app" target="_blank" rel="noopener"><i class="fab fa-github"></i> Source</a>
+          </p>
         </div>
-    </footer>
+      </article>
+    </div>
 
-    <script src="script.js"></script>
+    <h3 class="minihead reveal">Also built</h3>
+    <ul class="also">
+      <li class="reveal l1"><span>Kasper Template</span>
+        <a href="https://belal-salah1.github.io/Kasper-Template/" target="_blank" rel="noopener">Live</a>
+        <a href="https://github.com/belal-Salah1/Kasper-Template" target="_blank" rel="noopener">Source</a></li>
+      <li class="reveal l2"><span>Zero Template</span>
+        <a href="https://belal-salah1.github.io/Zero-template/" target="_blank" rel="noopener">Live</a>
+        <a href="https://github.com/belal-Salah1/Zero-template" target="_blank" rel="noopener">Source</a></li>
+      <li class="reveal l3"><span>Todo App</span>
+        <a href="https://belal-salah1.github.io/toDo-List/" target="_blank" rel="noopener">Live</a>
+        <a href="https://github.com/belal-Salah1/toDo-List" target="_blank" rel="noopener">Source</a></li>
+      <li class="reveal l4"><span>Earlier portfolio</span>
+        <a href="https://belal-salah1.github.io/My-Portfoilo/" target="_blank" rel="noopener">Live</a>
+        <a href="https://github.com/belal-Salah1/My-Portfoilo" target="_blank" rel="noopener">Source</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── Experience ─────────────────────────────────────── -->
+<section class="sec" id="experience">
+  <div class="wrap">
+    <div class="head2 reveal reveal--fade">
+      <p class="eyebrow"><span>Experience</span></p>
+      <h2>Where I've been.</h2>
+    </div>
+
+    <ol class="tl">
+      <li class="tl__item reveal">
+        <p class="tl__when">Aug 2025 — May 2026</p>
+        <h3>Full-Stack Engineer</h3>
+        <p class="tl__where">Convertedin · Maadi, Cairo</p>
+        <ul>
+          <li>Built and maintained full-stack features with Vue.js, Angular and Laravel across multiple production projects.</li>
+          <li>Worked on the Convertedin Orders system — order workflows, API integrations and business logic.</li>
+          <li>Improved app performance by optimizing rendering, cutting unnecessary API calls and reshaping the frontend architecture.</li>
+          <li>Designed and consumed Laravel REST APIs with validation, middleware and optimized queries.</li>
+          <li>Sped up the backend through query optimization, pagination and efficient Eloquent relationships.</li>
+          <li>Built reusable, responsive UI components to keep products consistent.</li>
+        </ul>
+      </li>
+
+      <li class="tl__item tl__item--quiet reveal">
+        <p class="tl__when">Feb 2024 — Aug 2025</p>
+        <h3>Data Entry &amp; Research <span class="tl__pt">Part-time</span></h3>
+        <p class="tl__where">Convertedin · Maadi, Cairo</p>
+        <ul>
+          <li>Added and maintained product data across the company's Shopify storefronts.</li>
+          <li>Researched companies by technology stack and organized the findings into detailed sheets.</li>
+        </ul>
+      </li>
+
+      <li class="tl__item tl__item--quiet reveal">
+        <p class="tl__when">Sept 2023 — Present</p>
+        <h3>BSc Computer Science</h3>
+        <p class="tl__where">Misr University for Science &amp; Technology</p>
+        <ul>
+          <li>Grade: Very Good. Coursework in computer architecture, data structures, algorithms, OOP and SQL.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ── Contact ────────────────────────────────────────── -->
+<section class="sec sec--contact" id="contact">
+  <div class="wrap">
+    <div class="head2 reveal reveal--fade">
+      <p class="eyebrow"><span>Contact</span></p>
+      <h2>Tell me what you're&nbsp;building.</h2>
+      <p class="lede">
+        An idea on a whiteboard, an MVP that needs to launch, or a live product that needs new
+        features — send me the details and I'll tell you how I'd approach it.
+      </p>
+    </div>
+
+    <div class="contact">
+      <form class="card form reveal" novalidate>
+        <div class="field">
+          <label for="cname">Your name</label>
+          <input id="cname" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="cmail">Email</label>
+          <input id="cmail" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="cmsg">About the project</label>
+          <textarea id="cmsg" name="message" rows="6" required
+            placeholder="What are you building, who's it for, and what's the deadline?"></textarea>
+        </div>
+        <button class="btn btn--wide" type="submit">Send message <i class="fas fa-paper-plane"></i></button>
+        <p class="form__note" role="status" aria-live="polite">
+          Opens a draft in your email app, addressed to me.
+        </p>
+      </form>
+
+      <ul class="chans reveal">
+        <li><a href="mailto:belal.salah259@gmail.com">
+          <i class="fas fa-envelope"></i><span>Email</span><b>belal.salah259@gmail.com</b></a></li>
+        <li><a href="https://wa.me/201080121345" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i><span>WhatsApp</span><b>+20 108 012 1345</b></a></li>
+        <li><a href="tel:+201080121345">
+          <i class="fas fa-phone"></i><span>Phone</span><b>+20 108 012 1345</b></a></li>
+        <li><a href="https://www.linkedin.com/in/belal-salah-2930b9287/" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin-in"></i><span>LinkedIn</span><b>belal-salah</b></a></li>
+        <li><a href="https://github.com/belal-Salah1" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i><span>GitHub</span><b>belal-Salah1</b></a></li>
+        <li><a href="assets/Belal Salah Mowaad.pdf" download>
+          <i class="fas fa-file-arrow-down"></i><span>Résumé</span><b>PDF, 2 pages</b></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__row">
+    <p class="foot__who"><b>Belal Salah</b> — Full-Stack Engineer, Cairo</p>
+    <p class="foot__made">Hand-built with HTML, CSS and vanilla JS. No framework, no template.</p>
+    <a class="foot__up" href="#top"><i class="fas fa-arrow-up"></i> Back to top</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
-
