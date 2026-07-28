@@ -124,22 +124,6 @@ if (looper) {
   });
 }
 
-/* ── Contact → email draft ─────────────────────────── */
-const form = document.querySelector('.form');
-const note = form.querySelector('.form__note');
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  if (!form.reportValidity()) return;
-
-  const f = new FormData(form);
-  const subject = `Project inquiry — ${f.get('name')}`;
-  const body = `${f.get('message')}\n\n—\n${f.get('name')}\n${f.get('email')}`;
-
-  location.href = `mailto:belal.salah259@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  note.textContent = 'Draft opened in your email app. If nothing happened, write to belal.salah259@gmail.com.';
-});
-
 /* ── Polish layer: smooth scroll + scroll-linked motion ── */
 if (window.gsap && window.ScrollTrigger && !reduce) {
   gsap.registerPlugin(ScrollTrigger);
