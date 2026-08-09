@@ -1,7 +1,6 @@
 /* Belal Salah — portfolio behaviour.
-   Baseline works with no libraries: IntersectionObserver reveals, native
-   anchors, native scroll. GSAP + Lenis only layer polish on top, so a
-   failed CDN never leaves the page blank or unusable. */
+   No external libraries: IntersectionObserver reveals, native anchors,
+   native smooth scroll, and a small hand-rolled scroll-linked motion layer. */
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -106,7 +105,7 @@ if (looper) {
   let paused = reduce;
 
   const setIcon = () => {
-    toggle.innerHTML = `<i class="fas fa-${paused ? 'play' : 'pause'}"></i>`;
+    toggle.innerHTML = `<svg class="icon" aria-hidden="true"><use href="#icon-${paused ? 'play' : 'pause'}"></use></svg>`;
     toggle.setAttribute('aria-label', paused ? 'Play demo' : 'Pause demo');
   };
   setIcon();
@@ -124,78 +123,53 @@ if (looper) {
   });
 }
 
-/* ── Polish layer: smooth scroll + scroll-linked motion ──
-   GSAP, ScrollTrigger and Lenis are fetched only after the page has
-   already painted, so ~130KB of third-party JS never competes with LCP. */
-function initPolish() {
-  if (!(window.gsap && window.ScrollTrigger) || reduce) return;
-  gsap.registerPlugin(ScrollTrigger);
-
-  if (window.Lenis) {
-    const lenis = new Lenis({ duration: 1.05, smoothWheel: true });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
-    document.documentElement.style.scrollBehavior = 'auto';
-
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.hash);
-        if (!target) return;
-        e.preventDefault();
-        lenis.scrollTo(target, { offset: -72 });
-      });
-    });
-  }
-
-  // portrait drifts against the scroll
-  gsap.to('.portrait', {
-    yPercent: -13, ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
-  });
-
-  // the ambient glow trails behind the page
-  gsap.to('.aura', {
-    yPercent: 10, ease: 'none',
-    scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: true },
-  });
-
-  // featured demos float as they cross the viewport
-  gsap.utils.toArray('.feat__media').forEach(el => {
-    gsap.fromTo(el, { y: 36 }, {
-      y: -36, ease: 'none',
-      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
-    });
-  });
-
-  // the timeline spine fills as you read down it
-  const tl = document.querySelector('.tl');
-  if (tl) {
-    ScrollTrigger.create({
-      trigger: tl, start: 'top 78%', end: 'bottom 65%', scrub: true,
-      onUpdate: self => tl.style.setProperty('--f', self.progress),
-    });
-  }
-
-  document.fonts?.ready.then(() => ScrollTrigger.refresh());
-}
-
+/* ── Polish layer: scroll-linked motion, no animation library ──
+   Hand-rolled so ~130KB of third-party JS never has to load and
+   compete with the hero image for the main thread (it was hurting LCP). */
 if (!reduce) {
-  const loadScript = src => new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = src;
-    s.onload = resolve;
-    s.onerror = reject;
-    document.body.appendChild(s);
-  });
+  const hero = document.querySelector('.hero');
+  const portrait = document.querySelector('.portrait');
+  const aura = document.querySelector('.aura');
+  const featMedia = [...document.querySelectorAll('.feat__media')];
+  const tl = document.querySelector('.tl');
+  const clamp01 = n => Math.min(1, Math.max(0, n));
 
-  const loadPolishLayer = () => {
-    loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js')
-      .then(() => loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js'))
-      .then(() => loadScript('https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js'))
-      .then(initPolish)
-      .catch(() => {});
+  let ticking = false;
+  const updateScrollFX = () => {
+    ticking = false;
+    const vh = innerHeight;
+
+    // portrait drifts against the scroll, across the hero section
+    if (hero && portrait) {
+      const p = clamp01((scrollY - hero.offsetTop) / hero.offsetHeight);
+      portrait.style.transform = `translateY(${p * -13}%)`;
+    }
+
+    // the ambient glow trails behind the page
+    if (aura) {
+      const p = clamp01(scrollY / (document.documentElement.scrollHeight - vh));
+      aura.style.transform = `translateY(${p * 10}%)`;
+    }
+
+    // featured demos float as they cross the viewport
+    featMedia.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const p = clamp01((vh - r.top) / (vh + r.height));
+      el.style.transform = `translateY(${36 - 72 * p}px)`;
+    });
+
+    // the timeline spine fills as you read down it
+    if (tl) {
+      const r = tl.getBoundingClientRect();
+      const start = 0.78 * vh, end = 0.65 * vh - r.height;
+      tl.style.setProperty('--f', clamp01((start - r.top) / (start - end)));
+    }
   };
 
-  addEventListener('load', () => setTimeout(loadPolishLayer), { once: true });
+  const onScroll = () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(updateScrollFX); }
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  updateScrollFX();
 }

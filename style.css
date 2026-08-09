@@ -68,6 +68,14 @@ body {
 
 img, video { display: block; max-width: 100%; height: auto; }
 
+.icon {
+  width: 1em; height: 1em;
+  fill: currentColor;
+  display: inline-block;
+  flex: none;
+  vertical-align: -0.125em;
+}
+
 a { color: inherit; }
 
 h1, h2, h3, h4 {
@@ -184,8 +192,8 @@ html { scrollbar-color: #ffffff24 var(--ink); scrollbar-width: thin; }
 }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 34px -12px var(--flame); }
 .btn:hover::after { opacity: 1; }
-.btn i { font-size: .8em; transition: transform .3s var(--ease); }
-.btn:hover i { transform: translateX(3px); }
+.btn .icon { font-size: .8em; transition: transform .3s var(--ease); }
+.btn:hover .icon { transform: translateX(3px); }
 
 .btn--ghost {
   background: transparent; color: var(--paper);
@@ -205,8 +213,8 @@ html { scrollbar-color: #ffffff24 var(--ink); scrollbar-width: thin; }
   transition: color .25s, border-color .25s;
 }
 .txtlink:hover { color: var(--paper); border-color: var(--gold); }
-.txtlink i { font-size: .75em; transition: transform .25s var(--ease); }
-.txtlink:hover i { transform: translateY(2px); }
+.txtlink .icon { font-size: .75em; transition: transform .25s var(--ease); }
+.txtlink:hover .icon { transform: translateY(2px); }
 
 /* ── Ambient background ─────────────────────────────── */
 .aura {
@@ -830,7 +838,7 @@ body::before {
   transition: color .25s;
 }
 .proj__links a:hover { color: var(--c); }
-.proj__links i { font-size: .85em; }
+.proj__links .icon { font-size: .85em; }
 
 .also { list-style: none; padding: 0; display: grid; gap: 0; }
 .also li {
@@ -892,12 +900,12 @@ body::before {
   grid-column: 1;
   font: 400 .76rem var(--mono); color: var(--dim);
 }
-.certlist i {
+.certlist .icon {
   grid-column: 2; grid-row: 1 / 3; align-self: center;
   font-size: .78rem; color: var(--dim);
   transition: color .3s, transform .3s var(--ease);
 }
-.certlist a:hover i { color: var(--c); transform: translate(2px, -2px); }
+.certlist a:hover .icon { color: var(--c); transform: translate(2px, -2px); }
 /* the Almadrasa one has no verification URL, so it isn't a link */
 .cert--flat { cursor: default; }
 
@@ -1020,8 +1028,8 @@ body::before {
   transition: color .25s;
 }
 .foot__up:hover { color: var(--gold); }
-.foot__up i { transition: transform .3s var(--ease); }
-.foot__up:hover i { transform: translateY(-3px); }
+.foot__up .icon { transition: transform .3s var(--ease); }
+.foot__up:hover .icon { transform: translateY(-3px); }
 
 /* ── Motion: entrance ───────────────────────────────── */
 [data-anim] {
@@ -1139,6 +1147,6 @@ body::before {
   .reveal { opacity: 1; transform: none; }
   .aura span { animation: none; }
   .portrait { animation: none; }
-  /* ScrollTrigger never runs here, so show the spine filled rather than empty */
+  /* the scroll-linked motion layer never runs here, so show the spine filled rather than empty */
   .tl { --f: 1; }
 }
