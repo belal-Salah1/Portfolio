@@ -124,8 +124,11 @@ if (looper) {
   });
 }
 
-/* ── Polish layer: smooth scroll + scroll-linked motion ── */
-if (window.gsap && window.ScrollTrigger && !reduce) {
+/* ── Polish layer: smooth scroll + scroll-linked motion ──
+   GSAP, ScrollTrigger and Lenis are fetched only after the page has
+   already painted, so ~130KB of third-party JS never competes with LCP. */
+function initPolish() {
+  if (!(window.gsap && window.ScrollTrigger) || reduce) return;
   gsap.registerPlugin(ScrollTrigger);
 
   if (window.Lenis) {
@@ -175,4 +178,24 @@ if (window.gsap && window.ScrollTrigger && !reduce) {
   }
 
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
+}
+
+if (!reduce) {
+  const loadScript = src => new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = reject;
+    document.body.appendChild(s);
+  });
+
+  const loadPolishLayer = () => {
+    loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js')
+      .then(() => loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js'))
+      .then(() => loadScript('https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js'))
+      .then(initPolish)
+      .catch(() => {});
+  };
+
+  addEventListener('load', () => setTimeout(loadPolishLayer), { once: true });
 }
