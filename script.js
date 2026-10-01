@@ -129,7 +129,6 @@ if (looper) {
 if (!reduce) {
   const hero = document.querySelector('.hero');
   const portrait = document.querySelector('.portrait');
-  const aura = document.querySelector('.aura');
   const featMedia = [...document.querySelectorAll('.feat__media')];
   const tl = document.querySelector('.tl');
   const clamp01 = n => Math.min(1, Math.max(0, n));
@@ -143,12 +142,6 @@ if (!reduce) {
     if (hero && portrait) {
       const p = clamp01((scrollY - hero.offsetTop) / hero.offsetHeight);
       portrait.style.transform = `translateY(${p * -13}%)`;
-    }
-
-    // the ambient glow trails behind the page
-    if (aura) {
-      const p = clamp01(scrollY / (document.documentElement.scrollHeight - vh));
-      aura.style.transform = `translateY(${p * 10}%)`;
     }
 
     // featured demos float as they cross the viewport

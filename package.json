@@ -1,0 +1,9 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "description": "Static portfolio: no build step, no dependencies. `npm run dev` just serves the folder.",
+  "scripts": {
+    "dev": "python3 -m http.server 8000 --bind 127.0.0.1",
+    "start": "npm run dev"
+  }
+}

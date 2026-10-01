@@ -2,8 +2,8 @@
 Live Demo:https://belal-salah1.github.io/Portfolio/
 
 Personal site for **Belal Salah**, full-stack engineer in Cairo. Its job is to get a project
-inquiry: it states what I do, shows the work (two with video walkthroughs), lists the stack and
-certifications, and hands over every way to reach me.
+inquiry: it states what I do, shows the work (two with video walkthroughs, plus a client project from Upwork with its review
+and roadmap), lists the stack and certifications, and hands over every way to reach me.
 
 Static site — three files, no build step, no framework. Open `index.html` and it runs.
 
@@ -22,11 +22,14 @@ process step and project chip inherits its hue from the layer it belongs to.
 
 **Type** — Bricolage Grotesque (display), Figtree (body), JetBrains Mono (labels, eyebrows, data).
 
-**Signature** — the stack section: four slabs whose gradient spine thickens as you engage,
-coloured along that same warm-to-cool axis. It is the job title made legible.
+**Signature** — the stack section: four slabs whose coloured spine thickens as you engage,
+running along that same warm-to-cool axis. It is the job title made legible.
+
+**Accent** — no gradients. One flat gold (`--accent`) carries actions and emphasis; the four layer
+colours above are kept for the stack.
 
 The hero headline carries the same idea typographically: *whiteboard* is set in mono inside a
-dashed wireframe box, *production* is filled with the solid warm gradient. Hovering the headline
+dashed wireframe box, *production* is set in the solid accent. Hovering the headline
 resolves the sketch into the finished thing.
 
 ## Files
@@ -36,7 +39,7 @@ index.html    all markup, one page
 style.css     tokens, components, motion, responsive
 script.js     reveals, nav, video, scroll-linked motion
 assets/
-  myPhoto.webP           portrait (JPEG despite the extension)
+  myPhoto.webP           portrait, 4:5, shown as shot
   favicon.svg            four-slab stack mark
   Belal-Salah-CV.pdf     downloadable CV
   real-estate-demo.mp4   44 MB — click to play, never preloaded
@@ -52,7 +55,7 @@ smooth scroll, portrait and demo parallax, and the experience timeline's spine f
 read down it. If a CDN fails the page still works and nothing stays invisible.
 
 `prefers-reduced-motion: reduce` short-circuits all of it: no smooth scroll, no parallax, no
-drifting gradients, no autoplaying loop, and every reveal starts visible.
+autoplaying loop, and every reveal starts visible.
 
 ## Video handling
 
@@ -69,10 +72,11 @@ Both were copied in as-is; re-encoding the 44 MB one down to a few MB is worth d
 ## Running it
 
 ```bash
-python3 -m http.server 8000
+npm run dev          # same as: python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
+There is nothing to install: `package.json` only holds the script, and the site has no dependencies.
 A file:// open works too, but a server is closer to production.
 
 ## Deploying

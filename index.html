@@ -54,7 +54,6 @@
   </defs>
 </svg>
 
-<div class="aura" aria-hidden="true"><span></span><span></span><span></span></div>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="head">
@@ -135,10 +134,8 @@
 
     <div class="hero__me" data-anim="4">
       <div class="portrait">
-        <div class="portrait__shot">
-          <img src="assets/myPhoto.webP" width="760" height="760"
-               alt="Belal Salah" fetchpriority="high" decoding="async">
-        </div>
+        <img src="assets/myPhoto.webP" width="760" height="950"
+             alt="Belal Salah" fetchpriority="high" decoding="async">
       </div>
       <p class="portrait__tag"><span>Cairo, Egypt</span> · UTC+3</p>
     </div>
@@ -335,8 +332,98 @@
       <h2>Things I've built.</h2>
     </div>
 
-    <!-- Featured: Real estate -->
+    <!-- Featured: GetCalculating (Upwork client work) -->
     <article class="feat reveal">
+      <div class="feat__media">
+        <a class="shot" href="https://getcalculating.com/" target="_blank" rel="noopener" aria-label="Open getcalculating.com">
+          <img src="assets/projects-images/getcalculating.webp" width="1080" height="514"
+               alt="GetCalculating's mortgage repayment calculator showing the monthly payment, total interest and loan amount"
+               loading="lazy" decoding="async">
+        </a>
+      </div>
+
+      <div class="feat__text">
+        <p class="feat__flag"><span class="tagline">Freelance · Upwork</span> Aug 2026 · 5.0 ★ client rating</p>
+        <h3>GetCalculating</h3>
+        <p class="role">My role — Front-end developer</p>
+        <p>
+          A free calculator platform: 100+ tools across finance, health, maths, construction and
+          more that load instantly and show their working. The brief was a lightweight, fast shell
+          to carry all of it.
+        </p>
+        <p>
+          I challenged the original brief, proposed an architecture that can keep growing, and
+          built the site static-first. Then I set the repo up for Claude Code, so the owner can
+          extend it themselves with AI sub-agents.
+        </p>
+        <ul class="tags">
+          <li class="l1">Astro</li><li class="l1">TypeScript</li>
+          <li class="l2">Supabase</li><li class="l4">Vercel</li>
+          <li class="l4">Playwright</li><li class="l3">Claude Code</li>
+        </ul>
+        <p class="feat__links">
+          <a class="btn btn--ghost btn--sm" href="https://getcalculating.com/" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right-from-square"></use></svg> Live site
+          </a>
+          <a class="btn btn--ghost btn--sm" href="https://www.upwork.com/freelancers/~01221d7c242bace891" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-upwork"></use></svg> Upwork profile
+          </a>
+        </p>
+      </div>
+
+      <div class="feat__more">
+        <figure class="review">
+          <blockquote>
+            <p>
+              Out of over 100 proposals, every AI tool I consulted recommended Belal, and he
+              exceeded expectations in every way. He understood the project better than anyone else
+              right from the start, pointing out flaws in my initial brief, explaining why they
+              needed fixing, and proposing far better solutions that set the app up for future growth.
+            </p>
+            <p>
+              Belal went above and beyond throughout the entire build. Communication was super fast
+              with constant updates, and we messaged regularly during the build to bounce ideas
+              around and make strategic decisions together. Once the site was built, he spent hours
+              with me across multiple live sessions fixing bugs, making quality-of-life improvements,
+              and ensuring I was completely comfortable with the system. He didn't just build a
+              clean, lightning-fast site, he engineered the entire repository (CLAUDE.md, AGENTS.md,
+              ARCHITECTURE.md) specifically for Claude Code, giving me full power to design, modify,
+              and scale the app myself using AI sub-agents.
+            </p>
+            <p>
+              I would highly recommend anyone looking to get an app or website built to use Belal.
+              I will definitely continue working with him to expand this app and build future
+              projects, as there is zero need to risk finding another developer when I have found
+              one who can do it all. Top-tier developer, AI workflow expert, and an outstanding teacher.
+            </p>
+          </blockquote>
+          <figcaption>
+            <span class="review__stars" role="img" aria-label="5.0 out of 5">★★★★★</span>
+            <span>Client review on Upwork · Aug 13 – 29, 2026</span>
+            <a href="https://www.upwork.com/freelancers/~01221d7c242bace891" target="_blank" rel="noopener">See my profile</a>
+          </figcaption>
+        </figure>
+
+        <div class="road">
+          <h4 class="road__head">Feature roadmap · 5 phases</h4>
+          <ol>
+            <li><b>01</b><div><h5>Core user product</h5>
+              <p>Accounts, saved calculations and history, favourites, sharing, branded PDF export, scenario comparison, feedback and public calculation links.</p></div></li>
+            <li><b>02</b><div><h5>Content, email &amp; monetisation</h5>
+              <p>Newsletter and result emails, an MDX blog with live calculators inside articles, profession toolkits, embeddable calculators, a digital products shop and shareable result cards.</p></div></li>
+            <li><b>03</b><div><h5>Admin, analytics &amp; operations</h5>
+              <p>GA4 refactor and admin overview, calculator management, a feedback dashboard, calculator health, an audit log and feature flags.</p></div></li>
+            <li><b>04</b><div><h5>SEO, AEO &amp; AI discoverability</h5>
+              <p>Answer-first calculator pages, question-based content, structured data, knowledge hubs and freshness and source signals.</p></div></li>
+            <li><b>05</b><div><h5>Advanced AI, API &amp; data</h5>
+              <p>Result explanations, smart recommendations, update notifications, a public API with playground, aggregate insights, AI-assisted discovery and personalisation.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <!-- Featured: Real estate -->
+    <article class="feat feat--flip reveal">
       <div class="feat__media">
         <div class="demo" data-demo="click">
           <video preload="none" playsinline width="1280" height="720"
@@ -375,7 +462,7 @@
     </article>
 
     <!-- Featured: Market-place -->
-    <article class="feat feat--flip reveal">
+    <article class="feat reveal">
       <div class="feat__media">
         <div class="demo" data-demo="loop">
           <video muted loop playsinline preload="metadata" width="1366" height="768"
