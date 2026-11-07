@@ -25,6 +25,8 @@
   --flame: #FF6A3D;
   --rose:  #E23E8C;
   --volt:  #5AE4F0;
+  /* design-tool selection blue: only the build layer uses it */
+  --select: #2E7BFF;
 
   /* one flat accent for actions and emphasis; gold, flame, rose and volt stay
      reserved for the stack layers */
@@ -1015,52 +1017,103 @@ body::before {
 .foot__up .icon { transition: transform .3s var(--ease); }
 .foot__up:hover .icon { transform: translateY(-3px); }
 
-/* ── Motion: entrance ───────────────────────────────── */
-[data-anim] {
-  opacity: 0;
-  animation: riseIn .85s var(--ease) forwards;
-}
-[data-anim='1'] { animation-delay: .05s }
-[data-anim='2'] { animation-delay: .15s }
-[data-anim='3'] { animation-delay: .25s }
-[data-anim='4'] { animation-delay: .35s }
-[data-anim='5'] { animation-delay: .48s }
-[data-anim='6'] { animation-delay: .58s }
-[data-anim='7'] { animation-delay: .68s }
-[data-anim='8'] { animation-delay: .78s }
-@keyframes riseIn {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: none; }
+/* ── Motion: the build ──────────────────────────────────
+   The page draws itself. Every block starts as a dashed wireframe;
+   an agent cursor flies to its corner and drags a selection open,
+   and the block is revealed exactly as far as the drag has got. */
+.reveal { opacity: 0; }
+.reveal.in, .reveal.frame { opacity: 1; }
+/* a frame not drawn yet: its children may already show, its own chrome can't */
+.frame:not(.in) { background-color: transparent !important; border-color: transparent !important; box-shadow: none !important; }
+.frame:not(.in)::before, .frame:not(.in)::after { opacity: 0 !important; }
+
+.agents { position: absolute; inset: 0 0 auto; height: 0; z-index: 110; pointer-events: none; }
+
+.agent {
+  position: absolute; top: 0; left: 0;
+  width: 13px; height: 18px;
+  z-index: 1; transition: opacity .5s;
 }
 
-.reveal {
-  opacity: 0; transform: translateY(26px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
-  transition-delay: var(--d, 0s);
+.bwire {
+  position: absolute;
+  border: 1px dashed var(--line-2); border-radius: 3px;
 }
-.reveal.in { opacity: 1; transform: none; }
 
-/* section heads fade only — their heading gets the masked line reveal instead */
-.reveal--fade { transform: none; }
-
-.msk { display: block; overflow: hidden; }
-.msk > span {
-  display: block;
-  transform: translateY(105%);
-  transition: transform .95s var(--ease) .1s;
+.bsel { position: absolute; border: 1px solid var(--select); background: #2E7BFF14; }
+.bsel i {
+  position: absolute; width: 7px; height: 7px;
+  background: #fff; border: 1px solid var(--select);
 }
-.in .msk > span { transform: none; }
+.bsel i:nth-child(1) { left: -4px;  top: -4px; }
+.bsel i:nth-child(2) { right: -4px; top: -4px; }
+.bsel i:nth-child(3) { left: -4px;  bottom: -4px; }
+.bsel i:nth-child(4) { right: -4px; bottom: -4px; }
+.bsel span {
+  position: absolute; left: 50%; top: calc(100% + 7px); translate: -50% 0;
+  padding: 1px 6px; border-radius: 3px;
+  background: var(--select); color: #fff;
+  font: 500 .62rem/1.5 var(--mono); white-space: nowrap;
+}
 
-/* stagger inside groups, no inline styles needed */
-.svcs .reveal:nth-child(2), .steps .reveal:nth-child(2),
-.also .reveal:nth-child(2), .slabs .reveal:nth-child(2) { --d: .07s }
-.svcs .reveal:nth-child(3), .steps .reveal:nth-child(3),
-.also .reveal:nth-child(3), .slabs .reveal:nth-child(3) { --d: .14s }
-.svcs .reveal:nth-child(4), .steps .reveal:nth-child(4),
-.also .reveal:nth-child(4), .slabs .reveal:nth-child(4) { --d: .21s }
-.svcs .reveal:nth-child(5), .steps .reveal:nth-child(5) { --d: .28s }
-.svcs .reveal:nth-child(6), .steps .reveal:nth-child(6) { --d: .35s }
-.grid2 .reveal:nth-child(2) { --d: .1s }
+.bguide { position: absolute; width: 1px; background: var(--flame); }
+
+.bclick {
+  position: absolute; margin: -11px 0 0 -11px;
+  border: 1.5px solid var(--select); border-radius: 50%;
+}
+
+/* headings type in; the untyped rest holds the layout so nothing jumps */
+.caret {
+  display: inline-block; width: 2px; height: .9em; margin-right: -2px;
+  vertical-align: -.06em; background: var(--select);
+  animation: blink .8s steps(1) infinite;
+}
+.ghost { color: transparent; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.bstat {
+  position: fixed; left: 50%; bottom: 1.2rem; translate: -50% 0; z-index: 115;
+  display: flex; align-items: center; gap: .65rem;
+  padding: .45rem .85rem;
+  border: 1px solid var(--line-2); border-radius: 8px; background: var(--ink-2);
+  font: 500 .7rem var(--mono); color: var(--haze); white-space: nowrap;
+  opacity: 0; transition: opacity .4s; pointer-events: none;
+}
+.bstat.on { opacity: 1; }
+.bstat b { display: flex; gap: 3px; }
+.bstat b i { width: 6px; height: 6px; border-radius: 50%; background: var(--c); }
+
+/* the knot orbits behind the portrait, showing only past its edges */
+.hero__me { position: relative; isolation: isolate; }
+.knot {
+  position: absolute; z-index: -1; pointer-events: none;
+  top: -14%; left: -30%; width: 160%; height: 128%;
+}
+
+/* timeline: corner brackets lock onto the entry you're reading */
+.tl__lock {
+  position: absolute; top: 0; right: -14px;
+  left: calc(clamp(1.5rem, 4vw, 2.5rem) - 14px);
+  height: var(--lh, 0); translate: 0 var(--ly, 0);
+  opacity: 0; pointer-events: none;
+  transition: translate .6s var(--ease), height .6s var(--ease), opacity .3s;
+}
+.tl.locked .tl__lock { opacity: 1; }
+.tl__lock b {
+  position: absolute; width: 14px; height: 14px;
+  border: 1.5px solid var(--accent);
+}
+.tl__lock b:nth-child(1) { top: 0;    left: 0;  border-right: 0; border-bottom: 0; }
+.tl__lock b:nth-child(2) { top: 0;    right: 0; border-left: 0;  border-bottom: 0; }
+.tl__lock b:nth-child(3) { bottom: 0; left: 0;  border-right: 0; border-top: 0; }
+.tl__lock b:nth-child(4) { bottom: 0; right: 0; border-left: 0;  border-top: 0; }
+.tl__read {
+  position: absolute; right: 0; bottom: calc(100% + .4rem);
+  font: 500 .66rem var(--mono); letter-spacing: .14em; color: var(--accent);
+}
+.tl__item.is-on .tl__when { color: var(--accent); }
+.tl__item.is-on::before { scale: 1.5; }
 
 /* ── Responsive ─────────────────────────────────────── */
 @media (max-width: 1000px) {
@@ -1127,8 +1180,8 @@ body::before {
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
-  [data-anim] { opacity: 1; animation: none; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 1; }
   /* the scroll-linked motion layer never runs here, so show the spine filled rather than empty */
   .tl { --f: 1; }
+  .agents, .bstat, .tl__lock { display: none; }
 }

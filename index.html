@@ -16,7 +16,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=10">
 
 <!-- Non-critical: fonts load off the critical path so they never block first paint -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=optional" onload="this.onload=null;this.rel='stylesheet'">
@@ -59,22 +59,22 @@
 <header class="head">
   <div class="progress" aria-hidden="true"></div>
   <div class="wrap head__row">
-    <a class="mark" href="#top" aria-label="Belal Salah, back to top">
+    <a class="mark reveal" href="#top" aria-label="Belal Salah, back to top">
       <img src="assets/favicon.svg" alt="" width="34" height="34">
       <span class="mark__name">Belal&nbsp;Salah</span>
     </a>
 
     <nav class="nav" id="nav" aria-label="Sections">
-      <a href="#about">About</a>
-      <a href="#stack">Stack</a>
-      <a href="#process">Process</a>
-      <a href="#work">Work</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
+      <a class="reveal" href="#about">About</a>
+      <a class="reveal" href="#stack">Stack</a>
+      <a class="reveal" href="#process">Process</a>
+      <a class="reveal" href="#work">Work</a>
+      <a class="reveal" href="#certificates">Certificates</a>
+      <a class="reveal" href="#contact">Contact</a>
     </nav>
 
     <div class="head__end">
-      <a class="btn btn--sm" href="#contact">Start a project</a>
+      <a class="btn btn--sm reveal" href="#contact">Start a project</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
         <span></span><span></span>
       </button>
@@ -89,50 +89,51 @@
 <section class="hero">
   <div class="wrap hero__grid">
     <div class="hero__text">
-      <p class="pill" data-anim="1"><i class="dot"></i> Available for new projects</p>
+      <p class="pill reveal"><i class="dot"></i> Available for new projects</p>
 
       <h1 class="hero__title">
-        <span data-anim="2">I take products</span>
-        <span data-anim="3">from <em class="sketch">whiteboard</em></span>
-        <span data-anim="4">to <em class="live">production</em>.</span>
+        <span class="reveal">I take products</span>
+        <span class="reveal">from <em class="sketch">whiteboard</em></span>
+        <span class="reveal">to <em class="live">production</em>.</span>
       </h1>
 
-      <p class="hero__sub" data-anim="5">
+      <p class="hero__sub reveal">
         Two years at Convertedin building e-commerce platforms, marketing-AI SaaS and monitoring
         systems. I handle requirements, system design, frontend, backend, deployment, and the
         production support after launch.
       </p>
 
-      <div class="hero__acts" data-anim="6">
-        <a class="btn" href="#contact">Start a project <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
-        <a class="btn btn--ghost" href="#work">See the work</a>
-        <a class="txtlink" href="assets/Belal-Salah-CV.pdf" download>
+      <div class="hero__acts">
+        <a class="btn reveal" href="#contact">Start a project <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
+        <a class="btn btn--ghost reveal" href="#work">See the work</a>
+        <a class="txtlink reveal" href="assets/Belal-Salah-CV.pdf" download>
           <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"></use></svg> Download CV
         </a>
       </div>
 
-      <ul class="socials" data-anim="7">
-        <li><a href="https://www.upwork.com/freelancers/~01221d7c242bace891" target="_blank" rel="noopener" title="Upwork">
+      <ul class="socials">
+        <li class="reveal"><a href="https://www.upwork.com/freelancers/~01221d7c242bace891" target="_blank" rel="noopener" title="Upwork">
           <svg class="icon" aria-hidden="true"><use href="#icon-upwork"></use></svg><span>Upwork</span></a></li>
-        <li><a href="https://github.com/belal-Salah1" target="_blank" rel="noopener" title="GitHub">
+        <li class="reveal"><a href="https://github.com/belal-Salah1" target="_blank" rel="noopener" title="GitHub">
           <svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg><span>GitHub</span></a></li>
-        <li><a href="https://wa.me/201080121345" target="_blank" rel="noopener" title="WhatsApp">
+        <li class="reveal"><a href="https://wa.me/201080121345" target="_blank" rel="noopener" title="WhatsApp">
           <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg><span>WhatsApp</span></a></li>
-        <li><a href="mailto:belal.salah259@gmail.com" title="Email">
+        <li class="reveal"><a href="mailto:belal.salah259@gmail.com" title="Email">
           <svg class="icon" aria-hidden="true"><use href="#icon-envelope"></use></svg><span>Email</span></a></li>
-        <li><a href="https://www.linkedin.com/in/belal-salah-2930b9287/" target="_blank" rel="noopener" title="LinkedIn">
+        <li class="reveal"><a href="https://www.linkedin.com/in/belal-salah-2930b9287/" target="_blank" rel="noopener" title="LinkedIn">
           <svg class="icon" aria-hidden="true"><use href="#icon-linkedin-in"></use></svg><span>LinkedIn</span></a></li>
-        <li><a href="tel:+201080121345" title="Phone">
+        <li class="reveal"><a href="tel:+201080121345" title="Phone">
           <svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg><span>Phone</span></a></li>
       </ul>
 
-      <p class="hero__meta" data-anim="8">
+      <p class="hero__meta reveal">
         <span>Shipped in</span>
         E-commerce · Marketing AI · Monitoring · Order systems
       </p>
     </div>
 
-    <div class="hero__me" data-anim="4">
+    <div class="hero__me reveal">
+      <canvas class="knot" aria-hidden="true"></canvas>
       <div class="portrait">
         <img src="assets/myPhoto.webP" width="760" height="950"
              alt="Belal Salah" fetchpriority="high" decoding="async">
@@ -161,7 +162,7 @@
 <!-- ── About ──────────────────────────────────────────── -->
 <section class="sec" id="about">
   <div class="wrap">
-    <div class="head2 reveal reveal--fade">
+    <div class="head2 reveal">
       <p class="eyebrow"><span>About</span></p>
       <h2>I like owning the whole thing.</h2>
     </div>
@@ -222,7 +223,7 @@
 <!-- ── Stack (signature) ──────────────────────────────── -->
 <section class="sec" id="stack">
   <div class="wrap">
-    <div class="head2 reveal reveal--fade">
+    <div class="head2 reveal">
       <p class="eyebrow"><span>The stack</span></p>
       <h2>Full-stack, layer&nbsp;by&nbsp;layer.</h2>
       <p class="lede">Four layers, all of them mine to build. Open one to see what's inside.</p>
@@ -295,7 +296,7 @@
 <!-- ── Process ────────────────────────────────────────── -->
 <section class="sec" id="process">
   <div class="wrap">
-    <div class="head2 reveal reveal--fade">
+    <div class="head2 reveal">
       <p class="eyebrow"><span>How I work</span></p>
       <h2>Idea to production, in six steps.</h2>
       <p class="lede">The order matters — each step is what makes the next one cheap.</p>
@@ -327,7 +328,7 @@
 <!-- ── Work ───────────────────────────────────────────── -->
 <section class="sec" id="work">
   <div class="wrap">
-    <div class="head2 reveal reveal--fade">
+    <div class="head2 reveal">
       <p class="eyebrow"><span>Selected work</span></p>
       <h2>Things I've built.</h2>
     </div>
@@ -573,7 +574,7 @@
 <!-- ── Experience ─────────────────────────────────────── -->
 <section class="sec" id="experience">
   <div class="wrap">
-    <div class="head2 reveal reveal--fade">
+    <div class="head2 reveal">
       <p class="eyebrow"><span>Experience</span></p>
       <h2>Where I've been.</h2>
     </div>
@@ -618,7 +619,7 @@
 <!-- ── Certifications ─────────────────────────────────── -->
 <section class="sec" id="certificates">
   <div class="wrap">
-    <div class="head2 reveal reveal--fade">
+    <div class="head2 reveal">
       <p class="eyebrow"><span>Certifications</span></p>
       <h2>Verified along the&nbsp;way.</h2>
       <p class="lede">Ten certificates, grouped by who issued them. Most link straight to their verification page.</p>
@@ -697,7 +698,7 @@
 <!-- ── Contact ────────────────────────────────────────── -->
 <section class="sec sec--contact" id="contact">
   <div class="wrap">
-    <div class="head2 reveal reveal--fade">
+    <div class="head2 reveal">
       <p class="eyebrow"><span>Contact</span></p>
       <h2>Tell me what you're&nbsp;building.</h2>
       <p class="lede">
@@ -706,14 +707,14 @@
       </p>
     </div>
 
-    <div class="contact__acts reveal">
-      <a class="btn" href="https://wa.me/201080121345" target="_blank" rel="noopener">
+    <div class="contact__acts">
+      <a class="btn reveal" href="https://wa.me/201080121345" target="_blank" rel="noopener">
         <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg> Message me on WhatsApp
       </a>
-      <a class="btn btn--ghost" href="mailto:belal.salah259@gmail.com">
+      <a class="btn btn--ghost reveal" href="mailto:belal.salah259@gmail.com">
         <svg class="icon" aria-hidden="true"><use href="#icon-envelope"></use></svg> Send an email
       </a>
-      <a class="btn btn--ghost" href="https://www.upwork.com/freelancers/~01221d7c242bace891" target="_blank" rel="noopener">
+      <a class="btn btn--ghost reveal" href="https://www.upwork.com/freelancers/~01221d7c242bace891" target="_blank" rel="noopener">
         <svg class="icon" aria-hidden="true"><use href="#icon-upwork"></use></svg> Hire me on Upwork
       </a>
     </div>
@@ -738,25 +739,25 @@
 
 <footer class="foot">
   <div class="wrap foot__row">
-    <p class="foot__who"><b>Belal Salah</b> — Full-Stack Engineer, Cairo</p>
+    <p class="foot__who reveal"><b>Belal Salah</b> — Full-Stack Engineer, Cairo</p>
 
     <ul class="socials socials--foot">
-      <li><a href="https://www.upwork.com/freelancers/~01221d7c242bace891" target="_blank" rel="noopener" title="Upwork">
+      <li class="reveal"><a href="https://www.upwork.com/freelancers/~01221d7c242bace891" target="_blank" rel="noopener" title="Upwork">
         <svg class="icon" aria-hidden="true"><use href="#icon-upwork"></use></svg><span>Upwork</span></a></li>
-      <li><a href="https://github.com/belal-Salah1" target="_blank" rel="noopener" title="GitHub">
+      <li class="reveal"><a href="https://github.com/belal-Salah1" target="_blank" rel="noopener" title="GitHub">
         <svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg><span>GitHub</span></a></li>
-      <li><a href="https://wa.me/201080121345" target="_blank" rel="noopener" title="WhatsApp">
+      <li class="reveal"><a href="https://wa.me/201080121345" target="_blank" rel="noopener" title="WhatsApp">
         <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg><span>WhatsApp</span></a></li>
-      <li><a href="mailto:belal.salah259@gmail.com" title="Email">
+      <li class="reveal"><a href="mailto:belal.salah259@gmail.com" title="Email">
         <svg class="icon" aria-hidden="true"><use href="#icon-envelope"></use></svg><span>Email</span></a></li>
-      <li><a href="https://www.linkedin.com/in/belal-salah-2930b9287/" target="_blank" rel="noopener" title="LinkedIn">
+      <li class="reveal"><a href="https://www.linkedin.com/in/belal-salah-2930b9287/" target="_blank" rel="noopener" title="LinkedIn">
         <svg class="icon" aria-hidden="true"><use href="#icon-linkedin-in"></use></svg><span>LinkedIn</span></a></li>
     </ul>
 
-    <a class="foot__up" href="#top"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg> Back to top</a>
+    <a class="foot__up reveal" href="#top"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg> Back to top</a>
   </div>
 </footer>
 
-<script src="script.js" defer></script>
+<script src="script.js?v=10" defer></script>
 </body>
 </html>
