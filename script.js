@@ -8,18 +8,21 @@ const [GOLD, VOLT] = ['--gold', '--volt'].map(v => css.getPropertyValue(v).trim(
 const clamp01 = n => Math.min(1, Math.max(0, n));
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
-/* ── The build: a swarm of agent cursors draws the page ──
-   Every block is broken down to its smallest parts, and every part
-   starts as a dashed wireframe. Parts that scroll
-   into view join a pool; agents grab them at random, click a random
-   corner and drag to the opposite one, and the piece is clipped open
-   exactly as far as the drag has got. One rAF loop eases each cursor
-   toward its target — the selection box and the clip follow the cursor. */
+/* ── The intro: a swarm of agent cursors draws the first screen ──
+   Only the header and hero are drawn this way. They're broken down to
+   their smallest parts, each part starts as a dashed wireframe, and
+   agents grab parts at random, click a random corner and drag to the
+   opposite one — the part is clipped open exactly as far as the drag
+   has got. Then the swarm gathers on the right and flies off, so
+   nothing moves while you read. The rest of the page just fades in. */
 
 // on phones the nav links sit in the closed burger menu: leave them as they are
 if (document.querySelector('.burger').offsetParent) {
   document.querySelectorAll('.nav .reveal').forEach(a => a.classList.replace('reveal', 'in'));
 }
+
+const INTRO = '.head .reveal, .hero .reveal';
+
 // break each block into parts: anything holding its own text, or media, is a
 // leaf; a wrapper becomes a frame whose chrome (fill, border, shadow) is drawn
 // on its own while its children build independently
@@ -31,14 +34,27 @@ const atomize = el => {
   el.classList.add('frame');
   kids.forEach(k => { k.classList.add('reveal'); atomize(k); });
 };
-if (!reduce) document.querySelectorAll('.reveal').forEach(atomize);
+if (!reduce) document.querySelectorAll(INTRO).forEach(atomize);
 
 // pieces hidden at this width (display: none) can't be drawn, so they start built
-const reveals = [];
-document.querySelectorAll('.reveal').forEach(el => (el.getClientRects().length ? reveals.push(el) : el.classList.add('in')));
+const visible = sel => [...document.querySelectorAll(sel)].filter(el => {
+  if (el.getClientRects().length) return true;
+  el.classList.add('in');
+});
+const intro = visible(INTRO);
+const rest = visible('.reveal').filter(el => !intro.includes(el));
 
-if (reduce) reveals.forEach(el => el.classList.add('in'));
+if (reduce) [...intro, ...rest].forEach(el => el.classList.add('in'));
 else {
+  /* the rest of the page: a quiet fade as each block scrolls in */
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    io.unobserve(e.target);
+    e.target.classList.add('in');
+  }), { rootMargin: '0px 0px -8% 0px', threshold: .05 });
+  rest.forEach(el => io.observe(el));
+
+  /* the first screen: the swarm */
   const layer = document.createElement('div');
   const stat = document.createElement('div');
   layer.className = 'agents';
@@ -65,37 +81,17 @@ else {
     return { x: r.left + scrollX, y: r.top + scrollY, w: r.width, h: r.height, onScreen: r.bottom > 0 && r.top < innerHeight };
   };
 
-  // headings type in: typed part, caret, and the untyped rest holding the layout
-  document.querySelectorAll('.head2 h2').forEach(h => {
-    h.dataset.text = h.textContent;
-    h.innerHTML = '<span></span><i class="caret"></i><span class="ghost"></span>';
-    h.lastChild.textContent = h.dataset.text;
-  });
-  const type = async h => {
-    const [done, , rest] = h.children, text = h.dataset.text;
-    for (let i = 1; i <= text.length; i++) {
-      done.textContent = text.slice(0, i);
-      rest.textContent = text.slice(i);
-      await wait(rand(2, 8));
-    }
-    await wait(80);
-    h.textContent = text;
-  };
-
   const ARROW = '<svg viewBox="0 0 13 18" width="13" height="18"><path d="M1 1v14l3.6-3.4 2.6 5.7 2.4-1.1-2.6-5.6H12z" fill="#F4F1FF" stroke="#0A0912" stroke-width="1.2" stroke-linejoin="round"/></svg>';
-  const pool = [], agents = [];
-  let built = 0, busy = 0, last = performance.now(), hideStat;
+  const agents = [];
+  let built = 0, last = performance.now(), running = true, docked;
+  const allDocked = new Promise(r => { docked = r; });
 
   const report = () => {
-    stat.innerHTML = `<b><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i></b>${agents.length} agents · ${built}/${reveals.length} layers`;
-    stat.classList.add('on');
-    clearTimeout(hideStat);
-    if (!pool.length && !busy) hideStat = setTimeout(() => stat.classList.remove('on'), 1600);
+    stat.innerHTML = `<b><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i></b>${agents.length} agents · ${built}/${intro.length} layers`;
   };
 
   // each agent has its own pace (a.p), so the swarm never moves in step
   const go = (a, x, y, k) => new Promise(done => Object.assign(a, { tx: x, ty: y, k: Math.min(.8, k * a.p), done }));
-  const wake = a => { const d = a.done; a.done = null; d?.(); };
 
   // the box grows from the clicked corner (sx, sy) toward the cursor
   const drag = ({ x, y, job: j }) => {
@@ -110,19 +106,19 @@ else {
     const dt = Math.min(50, now - last) / 16.7;
     last = now;
     for (const a of agents) {
-      const f = 1 - (1 - a.k) ** dt;
       if (a.dock) {
-        // docked agents trail a cluster on the right edge, mid-screen, as you scroll
+        // docked agents hold a tight cluster on the right edge, mid-screen
         a.tx = document.documentElement.clientWidth - 48 + a.ox;
         a.ty = scrollY + innerHeight / 2 + a.oy;
       }
+      const f = 1 - (1 - a.k) ** dt;
       a.x += (a.tx - a.x) * f;
       a.y += (a.ty - a.y) * f;
       a.el.style.translate = `${a.x}px ${a.y}px`;
       if (a.job) drag(a);
-      if (a.done && Math.hypot(a.tx - a.x, a.ty - a.y) < 2.5) wake(a);
+      if (a.done && Math.hypot(a.tx - a.x, a.ty - a.y) < 2.5) { const d = a.done; a.done = null; d(); }
     }
-    requestAnimationFrame(frame);
+    if (running) requestAnimationFrame(frame);
   };
 
   const finish = job => {
@@ -130,87 +126,76 @@ else {
     job.el.classList.add('in');
     job.el.style.clipPath = '';
     built++;
+    report();
   };
 
   const build = async (a, job) => {
-    busy++;
-    // the first screen (header + hero) is drawn at a calmer pace; the rest at full speed
-    const intro = !!job.el.closest('.head, .hero');
-    await wait(intro ? rand(0, 220) : rand(0, 40));
+    await wait(rand(0, 220));
     Object.assign(job, docRect(job.el));
-    const speed = intro ? .5 : 1 + pool.length * .5;
-    const h2 = job.el.matches('h2[data-text]') && job.el;
     job.frame = job.el.classList.contains('frame');
+    if (!job.onScreen) return finish(job);
 
-    if (!job.onScreen) {
-      finish(job);
-      if (h2) h2.textContent = h2.dataset.text;
-    } else {
-      job.fx = Math.random() < .5;
-      job.fy = Math.random() < .5;
-      job.sx = job.x + (job.fx ? job.w : 0);
-      job.sy = job.y + (job.fy ? job.h : 0);
-      await go(a, job.sx, job.sy, .45 * speed);
+    job.fx = Math.random() < .5;
+    job.fy = Math.random() < .5;
+    job.sx = job.x + (job.fx ? job.w : 0);
+    job.sy = job.y + (job.fy ? job.h : 0);
+    await go(a, job.sx, job.sy, .22);
 
-      click(job.sx, job.sy);
-      job.sel = add('bsel', `<i></i><i></i><i></i><i></i><span>${Math.round(job.w)} × ${Math.round(job.h)}</span>`);
-      const guide = add('bguide');
-      place(guide, job.sx, job.y - 48, 1, job.h + 96);
-      job.wire.remove();
-      if (!job.frame) job.el.classList.add('in');
-      a.job = job;
-      drag(a);
+    click(job.sx, job.sy);
+    job.sel = add('bsel', `<i></i><i></i><i></i><i></i><span>${Math.round(job.w)} × ${Math.round(job.h)}</span>`);
+    const guide = add('bguide');
+    place(guide, job.sx, job.y - 48, 1, job.h + 96);
+    job.wire.remove();
+    if (!job.frame) job.el.classList.add('in');
+    a.job = job;
+    drag(a);
 
-      await go(a, job.sx + (job.fx ? -job.w : job.w), job.sy + (job.fy ? -job.h : job.h), .3 * speed);
-      a.job = null;
-      finish(job);
-      report();
-      if (h2) await type(h2);
-      setTimeout(() => { fade(job.sel); fade(guide); }, 80);
-    }
-    busy--;
-    report();
+    await go(a, job.sx + (job.fx ? -job.w : job.w), job.sy + (job.fy ? -job.h : job.h), .15);
+    a.job = null;
+    finish(job);
+    setTimeout(() => { fade(job.sel); fade(guide); }, 80);
   };
 
-  const run = async a => {
-    for (;;) {
-      if (pool.length) { await build(a, pool.splice(Math.random() * pool.length | 0, 1)[0]); continue; }
-      // nothing left on screen to draw: fly home and wait for the next scroll
-      a.k = .1 * a.p;
-      a.dock = true;
-      await new Promise(r => { a.call = r; });
-      a.dock = false;
-    }
-  };
-
-  const enqueue = el => {
+  const pool = intro.map(el => {
     const { x, y, w, h } = docRect(el);
     const wire = add('bwire');
     place(wire, x, y, w, h);
-    pool.push({ el, wire });
-    agents.forEach(a => { a.call?.(); a.call = null; });
-    report();
+    return { el, wire };
+  });
+
+  const run = async a => {
+    while (pool.length) await build(a, pool.splice(Math.random() * pool.length | 0, 1)[0]);
+    a.k = .1 * a.p;
+    a.dock = true;
+    if (built === intro.length) docked();
+    await allDocked;
+    // the swarm leaves together, off the right edge
+    await wait(900 + rand(0, 250));
+    a.dock = false;
+    await go(a, document.documentElement.clientWidth + 60 + a.ox, a.y, .06);
+    a.el.remove();
+    agents.splice(agents.indexOf(a), 1);
+    if (!agents.length) {
+      running = false;
+      layer.remove();
+      stat.remove();
+    }
   };
 
-  // the swarm flies in from every edge
+  // the swarm flies in from every edge; each agent has a slot in the dock,
+  // where a golden-angle spiral packs them into a tight disc
   for (let i = innerWidth < 700 ? 12 : 32; i > 0; i--) {
     const side = Math.random() < .5;
     const x = side ? (Math.random() < .5 ? -30 : innerWidth + 30) : rand(0, innerWidth);
     const y = scrollY + (side ? rand(0, innerHeight) : (Math.random() < .5 ? -30 : innerHeight + 30));
-    // a slot in the dock: a golden-angle spiral packs the swarm into a tight disc
     const t = agents.length * 2.4, d = 5 * Math.sqrt(agents.length);
-    const a = { el: add('agent', ARROW), x, y, tx: x, ty: y, k: .1, p: rand(.7, 1.5), ox: Math.cos(t) * d, oy: Math.sin(t) * d };
-    agents.push(a);
-    run(a);
+    agents.push({ el: add('agent', ARROW), x, y, tx: x, ty: y, k: .1, p: rand(.7, 1.5), ox: Math.cos(t) * d, oy: Math.sin(t) * d });
   }
+  report();
+  stat.classList.add('on');
+  allDocked.then(() => stat.classList.remove('on'));
+  agents.forEach(run);
   requestAnimationFrame(frame);
-
-  const io = new IntersectionObserver(entries => entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    io.unobserve(e.target);
-    enqueue(e.target);
-  }), { rootMargin: '0px', threshold: .02 });
-  reveals.forEach(el => io.observe(el));
 }
 
 /* ── Navigation ─────────────────────────────────────── */

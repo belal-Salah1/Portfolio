@@ -1017,12 +1017,18 @@ body::before {
 .foot__up .icon { transition: transform .3s var(--ease); }
 .foot__up:hover .icon { transform: translateY(-3px); }
 
-/* ── Motion: the build ──────────────────────────────────
-   The page draws itself. Every block starts as a dashed wireframe;
-   an agent cursor flies to its corner and drags a selection open,
-   and the block is revealed exactly as far as the drag has got. */
-.reveal { opacity: 0; }
-.reveal.in, .reveal.frame { opacity: 1; }
+/* ── Motion ─────────────────────────────────────────────
+   Reading the page: each block fades and rises a touch as it arrives.
+   The first screen is different — the header and hero are drawn live
+   by a swarm of agent cursors (see the build layer below). */
+.reveal {
+  opacity: 0; translate: 0 14px;
+  transition: opacity .6s var(--ease), translate .6s var(--ease);
+}
+.reveal.in, .reveal.frame { opacity: 1; translate: none; }
+.head .reveal, .hero .reveal { translate: none; transition: none; }
+
+/* ── The build layer: agents drawing the first screen ── */
 /* a frame not drawn yet: its children may already show, its own chrome can't */
 .frame:not(.in) { background-color: transparent !important; border-color: transparent !important; box-shadow: none !important; }
 .frame:not(.in)::before, .frame:not(.in)::after { opacity: 0 !important; }
@@ -1062,15 +1068,6 @@ body::before {
   position: absolute; margin: -11px 0 0 -11px;
   border: 1.5px solid var(--select); border-radius: 50%;
 }
-
-/* headings type in; the untyped rest holds the layout so nothing jumps */
-.caret {
-  display: inline-block; width: 2px; height: .9em; margin-right: -2px;
-  vertical-align: -.06em; background: var(--select);
-  animation: blink .8s steps(1) infinite;
-}
-.ghost { color: transparent; }
-@keyframes blink { 50% { opacity: 0; } }
 
 .bstat {
   position: fixed; left: 50%; bottom: 1.2rem; translate: -50% 0; z-index: 115;
@@ -1180,7 +1177,7 @@ body::before {
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
-  .reveal { opacity: 1; }
+  .reveal { opacity: 1; translate: none; }
   /* the scroll-linked motion layer never runs here, so show the spine filled rather than empty */
   .tl { --f: 1; }
   .agents, .bstat, .tl__lock { display: none; }
