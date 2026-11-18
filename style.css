@@ -683,6 +683,7 @@ body::before {
   margin-top: 1.5rem;
   font-size: .85rem; color: var(--dim);
 }
+.review__shot { max-width: 34rem; margin-top: 1.25rem; box-shadow: none; }
 .review__stars { color: var(--accent); letter-spacing: .12em; }
 
 .road__head { font: 600 1.25rem var(--disp); letter-spacing: -.015em; color: var(--paper); margin-bottom: .75rem; }
